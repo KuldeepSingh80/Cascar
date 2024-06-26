@@ -1,16 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cross from "../Images/cross.svg";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
-import {
-  Button,
-  CircularProgress,
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Grid,
-} from "@mui/material";
-
+import { Button, CircularProgress, Dialog, DialogContent, DialogContentText, DialogTitle, Grid } from "@mui/material";
 function Adduser({
   open,
   onClose,
@@ -22,8 +13,7 @@ function Adduser({
   setAddLoader,
   addLoader
 }) {
-  // Add validation rules for TextValidator here
-  React.useEffect(() => {
+  useEffect(() => {
     ValidatorForm.addValidationRule("ismax30", (value) => {
       return value.length <= 30;
     });
@@ -108,10 +98,10 @@ function Adduser({
                     <label>
                       <button type="submit" className="btncontrol">
                         {buttonName} {
-                        addLoader ? <CircularProgress sx={{ width: '20px !important', height: '20px !important', color: '#fff' }} /> : null
-                      }
+                          addLoader ? <CircularProgress sx={{ width: '20px !important', height: '20px !important', color: '#fff' }} /> : null
+                        }
                       </button>
-                     
+
                     </label>
                     <label>
                       <button onClick={onClose} className="btncontrol1">

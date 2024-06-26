@@ -2,11 +2,8 @@ import React from "react";
 
 const SVGComponent = ({ iteminner, type , width , height , viewBox }) => {
   const getVisibilityStyle = (vehicle) => {
-    // Define your visibility style logic here based on 'vehicle'
-
     return vehicle ? { visibility: "visible" } : { visibility: "hidden" };
   };
-
   const repairing = (
     <React.Fragment>
       <path

@@ -29,7 +29,6 @@ export const getAllParkingMap = createAsyncThunk(
         }
       );
       response.data.currentPage = pagenumber;
-
       return response.data;
     } catch (error) {}
   }
@@ -46,7 +45,7 @@ export const getAllIconMap = createAsyncThunk(
           },
         }
       );
-     
+
       return response.data.results;
     } catch (error) {}
   }
@@ -69,8 +68,6 @@ export const siteInfoApillocation = createAsyncThunk(
   }
 );
 
-//addusercar api
-
 export const siteInfoApi = createAsyncThunk("siteInfoApi", async () => {
   try {
     const response = await axios.get(
@@ -87,7 +84,7 @@ export const siteInfoApi = createAsyncThunk("siteInfoApi", async () => {
     throw error;
   }
 });
-//single data parking slot
+
 export const singleparkingslot = createAsyncThunk(
   "singleparkingslot",
   async (id) => {
@@ -226,7 +223,7 @@ const parkingMapSlice = createSlice({
         state.isSuccess = true;
         state.getAllIconMap = action.payload;
       })
-     
+
       .addCase(siteInfoApi.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;

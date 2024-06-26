@@ -5,7 +5,6 @@ import { FaCaravan, FaMap, FaUserCog } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import logo from "Assets/Images/carparking.png";
 import avatar from "Assets/Images/avatar1.png";
-import { MdWork } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import toggleleft from "Assets/Images/toggleleft.svg";
 import { Link } from "react-router-dom";
@@ -19,7 +18,7 @@ import { setAlert } from "redux/slices/alertSlice";
 export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
   const navigate = useNavigate();
   const location = useLocation();
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [logoutConfirmationState, setLogoutConfirmationState] = useState(false);
   const [userData, setUserData] = useState({
     username: "",
@@ -27,7 +26,6 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
     issuperadmin: false,
   });
   const [actives, setActives] = useState("dashboard");
-
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
@@ -35,7 +33,6 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
   };
-
 
   const handleToCloseLogoutConfirmation = useCallback(() => {
     setLogoutConfirmationState(false);
@@ -49,19 +46,18 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
         },
       })
       .then((res) => {
-        const { first_name,last_name, email, is_superuser } = res.data;
+        const { first_name, last_name, email, is_superuser } = res.data;
         setUserData({
-          username:first_name+" "+last_name,
+          username: first_name + " " + last_name,
           useremail: email,
           issuperadmin: is_superuser,
         });
 
-        localStorage.setItem("issuperuser",is_superuser)
+        localStorage.setItem("issuperuser", is_superuser)
         localStorage.setItem("isLoggedIn", true);
       })
       .catch((err) => {
         handleLogout();
-
         dispatch(
           setAlert({
             open: true,
@@ -70,16 +66,14 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
             duration: 6000,
           })
         );
-        localStorage.setItem("issuperuser",false)
+        localStorage.setItem("issuperuser", false)
       });
   }, []);
-
   const pathname = useMemo(() => location.pathname.split("/")[1], [location.pathname]);
-
   useEffect(() => {
     userID();
     setActives(pathname);
-  }, [userID, pathname,localStorage.getItem("issuperuser")]);
+  }, [userID, pathname, localStorage.getItem("issuperuser")]);
 
   const handleToOpenLogoutConfirmation = useCallback(() => {
     setLogoutConfirmationState(true);
@@ -98,7 +92,7 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
     [`& .${tooltipClasses.arrow}`]: {
       color: theme.palette.common.white,
     },
-    margin:0,
+    margin: 0,
   }));
   return (
     <>
@@ -126,92 +120,70 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
           </div>
           <div className="sidebar_body">
             {
-              sidebarStatus+""==="true"?
-              <ul className="navigation">
-              <li
-                className={`${
-                  pathname === "dashboard" ? "activeitem" : "noactive"
-                }`}
-              >
-                <Link to="/dashboard">
-                  <FaMap className="menuicons" />
-                  <span className="sidebar_menu_name">Map</span>
-                </Link>
-              </li>
-             
-            {
-              (localStorage.getItem("issuperuser")+"")==="true"?
-              <li
-              className={`${
-                pathname === "users" ? "activeitem" : "noactive"
-              }`}
-            >
-              <Link to="/users">
-                <FaUserCog className="menuicons" />
-                <span className="sidebar_menu_name">User Management</span>
-              </Link>
-            </li>:null
-            }
+              sidebarStatus + "" === "true" ?
+                <ul className="navigation">
+                  <li
+                    className={`${pathname === "dashboard" ? "activeitem" : "noactive"
+                      }`}
+                  >
+                    <Link to="/dashboard">
+                      <FaMap className="menuicons" />
+                      <span className="sidebar_menu_name">Map</span>
+                    </Link>
+                  </li>
+                  {
+                    (localStorage.getItem("issuperuser") + "") === "true" ?
+                      <li
+                        className={`${pathname === "users" ? "activeitem" : "noactive"
+                          }`}
+                      >
+                        <Link to="/users">
+                          <FaUserCog className="menuicons" />
+                          <span className="sidebar_menu_name">User Management</span>
+                        </Link>
+                      </li> : null
+                  }
+                </ul> :
+                <ul className="navigation">
+                  <LightTooltip title="Map" arrow placement="top" followCursor>
+                    <li
+                      className={`${pathname === "dashboard" ? "activeitem" : "noactive"
+                        }`}
+                    >
+                      <Link to="/dashboard">
+                        <FaMap className="menuicons" />
 
+                      </Link>
+                    </li>
+                  </LightTooltip>
+                  <LightTooltip title="Vehicles" arrow placement="top" followCursor>
+                    <li
+                      className={`${pathname === "vehicles" ? "activeitem" : "noactive"
+                        }`}
 
+                    >
+                      <Link to="/vehicles">
+                        <FaCaravan className="menuicons" />
 
+                      </Link>
+                    </li>
+                  </LightTooltip>
+                  {
+                    (localStorage.getItem("issuperuser") + "") === "true" ?
+                      <LightTooltip title="User Management" arrow placement="top" followCursor>
+                        <li className={`${pathname === "users" ? "activeitem" : "noactive"}`}>
+                          <Link to="/users">
+                            <FaUserCog className="menuicons" />
+                          </Link>
+                        </li>
+                      </LightTooltip> : null
+                  }
 
-
-            </ul>:
-            <ul className="navigation">
-              <LightTooltip title="Map" arrow placement="top" followCursor>
-            <li
-              className={`${
-                pathname === "dashboard" ? "activeitem" : "noactive"
-              }`}
-            >
-              <Link to="/dashboard">
-                <FaMap className="menuicons" />
-
-              </Link>
-            </li>
-            </LightTooltip>
-            <LightTooltip title="Vehicles" arrow placement="top" followCursor>
-            <li
-              className={`${
-                pathname === "vehicles" ? "activeitem" : "noactive"
-              }`}
-
-            >
-              <Link to="/vehicles">
-                <FaCaravan className="menuicons" />
-
-              </Link>
-            </li>
-            </LightTooltip>
-
-          {
-            (localStorage.getItem("issuperuser")+"")==="true"?
-
-            <LightTooltip title="User Management" arrow placement="top" followCursor>
-            <li
-            className={`${
-              pathname === "users" ? "activeitem" : "noactive"
-            }`}
-          >
-            <Link to="/users">
-              <FaUserCog className="menuicons" />
-
-            </Link>
-          </li>
-          </LightTooltip>:null
-          }
-
-
-
-
-          </ul>
+                </ul>
             }
           </div>
-
           <div className={`sidebar_foot ${sidebarStatus}`}>
             <div className=" sidebar_toggle2"></div>
-
             <ul>
               <li className="sidebar_foot_li sidebar_foot_avatar_li sb-avatar">
                 <img src={avatar} alt="avatar" />
@@ -238,7 +210,6 @@ export default function SideBar({ handleSidebarToggle, sidebarStatus }) {
           </div>
         </div>
       </div>
-
       <LogoutConfirmation
         open={logoutConfirmationState}
         onClose={handleToCloseLogoutConfirmation}

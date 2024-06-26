@@ -1,9 +1,8 @@
 import React from "react";
-import { Dialog, DialogTitle, useTheme } from "@mui/material";
+import { Dialog, DialogTitle } from "@mui/material";
 
 function Deletebox(props) {
   const { open, onClose, title, onConfirm } = props;
-  const theme = useTheme();
 
   return (
     <Dialog className="deletepopup-section" open={open} onClose={onClose}>

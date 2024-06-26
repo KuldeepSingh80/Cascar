@@ -12,9 +12,7 @@ const PanZoomRows = ({ iteminner }) => {
     };
 
     const getItemBackgroundColor = () => iteminner?.location_type ?? "#DDE5FD";
-
     const getItemBorderColor = () => iteminner?.colors?.border ?? "#DDE5FD";
-
     const renderTooltip = () => {
       if (iteminner.vehicle) {
         return (
@@ -35,15 +33,13 @@ const PanZoomRows = ({ iteminner }) => {
       return null;
     };
 
-    // Array of SVG data with their respective properties
     const svgData = [
         { width: "23", height: "21", viewBox: "0 0 23 21", type: "repairing" },
         { width: "22", height: "26", viewBox: "0 0 22 26", type: "washing" },
         { width: "25", height: "21", viewBox: "0 0 25 21", type: "polishing" },
         { width: "27", height: "21", viewBox: "0 0 27 21", type: "pickup" },
-      // Add more SVG data objects as needed
-    ];
 
+    ];
     return (
             <div className={determineClassName()}>
                 <div className="parkingmap-body-item"
@@ -55,12 +51,12 @@ const PanZoomRows = ({ iteminner }) => {
                 <div className="parkingmap-body-item-header">{renderTooltip()}</div>
                     <div className="menu-icons">
                         <ul>
-                        {/* Loop through the SVG data array and render SVGComponents */}
+
                         {svgData.map((svgProps, index) => (
                             <SVGComponent
                                 key={index}
                                 iteminner={iteminner}
-                                {...svgProps} // Spread the properties of each SVG data object
+                                {...svgProps}
                             />
                         ))}
                         </ul>

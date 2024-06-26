@@ -24,25 +24,8 @@ const Layout = ({ children }) => {
     };
   }, []);
 
-
-
-
-
-
- 
-
-
-
-
-
-
-
   return (
     <>
-      
-
-
-
       <main className={`main_wrrpr   ${sidebarStatus ? "" : "active"}`}>
         <SideBar handleSidebarToggle={handleSidebarToggle} sidebarStatus={sidebarStatus} />
         <div className="main_body">{children}</div>

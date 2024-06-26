@@ -11,6 +11,7 @@ const [tab,settab]=useState({
    tab1:false,
    tab2:false,
 })
+
 useEffect(() => {
     function loadGoogleTranslateScript() {
      if (!window?.google && !window?.google?.translate) {
@@ -52,10 +53,7 @@ useEffect(() => {
            );
       }
       catch(e){
-
       }
-        // If the script is already loaded, directly initialize the translator
-
      }
     }
 
@@ -63,7 +61,6 @@ useEffect(() => {
 
     const handleVisibilityChange = () => {
      if (document.visibilityState === 'visible') {
-        // Reload or reinitialize the script when the tab becomes visible
         loadGoogleTranslateScript();
      }
     };
@@ -72,7 +69,6 @@ useEffect(() => {
 
     return () => {
      document.removeEventListener('visibilitychange', handleVisibilityChange);
-     // Clean up any other event listeners or resources if needed
     };
 }, []);
 
@@ -80,7 +76,6 @@ const handleToChangeLanguage = (languageCode) => {
    if((languageCode==='nl' && tab.tab1===false) || (languageCode==='en' && tab.tab2===false)){
     const selectElement = document.querySelector('.goog-te-combo');
 
-    // Trigger a change event on the select element
     if (selectElement) {
      selectElement.value = languageCode;
      const event = new Event('change', { bubbles: true });
@@ -97,7 +92,6 @@ return (
      <div ref={googleTranslateElementRef} style={{ textAlign: 'end' }}></div>
      <div className="language-changer notranslate">
         <button className="lang-button" onClick={() => { handleToChangeLanguage('nl');
-      //set tab1 to true and tab2 to false
       settab({tab1:true,tab2:false})
       }}>
          <img src={dutch} alt="" style={{ width: '17px', height: '17px' }} />NL

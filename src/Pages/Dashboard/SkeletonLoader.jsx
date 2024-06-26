@@ -2,12 +2,11 @@ import React from 'react'
 import Skeleton from '@mui/material/Skeleton';
 
 export default function SkeletonLoader() {
-    //array element of 20 elements
     const arr = Array.from({length: 840}, (v, i) => i);
 
   return (
     <div className='skeleton-section'>
-        
+
         <div
             style={{
                 display: "flex",
@@ -21,14 +20,14 @@ export default function SkeletonLoader() {
         {
     arr.map((item) => {
         return(
-            
+
             <Skeleton animation="wave" variant="rounded" className='skeleton' />
-         
+
         )
     })
 }
 </div>
-        
+
     </div>
   )
 }

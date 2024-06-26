@@ -2,16 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import dayjs from "dayjs";
-
-// MUI Imports
 import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
-  MenuItem,
-  Select,
+  Button, Checkbox, FormControl, FormControlLabel, FormHelperText, MenuItem, Select
 } from "@mui/material";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import {
@@ -55,8 +47,7 @@ const ParkingInfo = () => {
 
   const [newStatus, setNewStatus] = useState("");
   const parkingSlot = data;
-  // console.log(parkingSlot)
-  const [locationid, setlocationid] = useState(data?.location_type?.id??location[0]?.id??"");
+  const [locationid, setlocationid] = useState(data?.location_type?.id ?? location[0]?.id ?? "");
   const [works, setworks] = useState();
   const [obj_check_work, setobj_check_work] = useState([]);
   const [statuspopup, setstatuspopup] = useState(false);
@@ -104,7 +95,7 @@ const ParkingInfo = () => {
     if (objstatus.status) {
       editparkingstatus(parkingSlot?.parking_session_id);
     }
-const isNoParking=disable_noparking()
+    const isNoParking = disable_noparking()
     if (objstatus.vehiclenumber && !isNoParking) {
       addusercar(selectedCarNumber);
     }
@@ -122,7 +113,7 @@ const isNoParking=disable_noparking()
 
     setError(false);
     workslist();
-  }, [parkingSlot?.vehicle, dispatch,data]);
+  }, [parkingSlot?.vehicle, dispatch, data]);
 
   const workstatus = (id) => {
     setobjerr({ ...objerr, work: "", parking_session: "" });
@@ -148,7 +139,7 @@ const isNoParking=disable_noparking()
       )
       .then((res) => {
         dispatch(getAllParkingMap());
-        // toast.success("Status added successfully");
+
         dispatch(
           setAlert({
             open: true,
@@ -163,12 +154,12 @@ const isNoParking=disable_noparking()
       .catch((err) => {
         if (err?.response?.data?.work === "This work is already added") {
           setobjerr({ ...objerr, work: err?.response?.data?.work });
-          // toast.error("This work is already added");
+
           dispatch(
             setAlert({
               open: true,
               message: "This work is already added",
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
@@ -178,12 +169,12 @@ const isNoParking=disable_noparking()
             ...objerr,
             parking_session: err?.response?.data?.parking_session[0],
           });
-          // toast.error("Please add vehicle first");
+
           dispatch(
             setAlert({
               open: true,
               message: "Please add vehicle first",
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
@@ -192,12 +183,11 @@ const isNoParking=disable_noparking()
           err?.response?.data.scheduled_at ===
           "Datetime less than current datetime is not allowed"
         ) {
-          // toast.error("This time has passed, please select another time");
           dispatch(
             setAlert({
               open: true,
               message: "This time has passed, please select another time",
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
@@ -222,12 +212,12 @@ const isNoParking=disable_noparking()
           setAlert({
             open: true,
             message: "Data Updated Successfully",
-            severity: "success", // or "error", "warning", "info"
+            severity: "success",
             duration: 6000,
           })
         );
       })
-      .catch((err) => {});
+      .catch((err) => { });
     setobjstatus({ ...objstatus, status: false });
   };
 
@@ -241,7 +231,7 @@ const isNoParking=disable_noparking()
       .then((res) => {
         setworks(res.data.results);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
   function handlechangeLocationId(e) {
     setobjstatus({ ...objstatus, location: true });
@@ -269,14 +259,13 @@ const isNoParking=disable_noparking()
           setAlert({
             open: true,
             message: "Data Updated Successfully",
-            severity: "success", // or "error", "warning", "info"
+            severity: "success",
             duration: 6000,
           })
         );
       })
       .catch((err) => {
-        if(err?.response?.data?.location_type){
-          // toast.error(err?.response?.data?.location_type)
+        if (err?.response?.data?.location_type) {
           dispatch(
             setAlert({
               open: true,
@@ -286,7 +275,7 @@ const isNoParking=disable_noparking()
             })
           );
         }
-        else{
+        else {
           dispatch(
             setAlert({
               open: true,
@@ -295,7 +284,6 @@ const isNoParking=disable_noparking()
               duration: 6000,
             })
           );
-          // toast.error("Something went wrong")
         }
       });
     setobjstatus({ ...objstatus, location: false });
@@ -335,7 +323,7 @@ const isNoParking=disable_noparking()
         {
           vehicle: id,
           parking_slot: plot,
-          location_type:locationid
+          location_type: locationid
         },
         {
           headers: {
@@ -351,50 +339,42 @@ const isNoParking=disable_noparking()
             setAlert({
               open: true,
               message: "Vehicle added successfully",
-              severity: "success", // or "error", "warning", "info"
+              severity: "success",
               duration: 6000,
             })
           );
-          // toast.success("Vehicle added successfully", {
-          //   position: toast.POSITION.BOTTOM_RIGHT,
-          // });
+
         }
-        // if already added then show error
+
       )
       .catch((e) => {
         if (e.response?.data?.location_type) {
-          // toast.error(e.response?.data?.location_type[0], {
-          //   position: toast.POSITION.BOTTOM_RIGHT,
-          // });
+
           dispatch(
             setAlert({
               open: true,
               message: e.response?.data?.location_type[0],
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
         } else if (e.response?.status === 400) {
-          // toast.error("Something went wrong", {
-          //   position: toast.POSITION.BOTTOM_RIGHT,
-          // });
+
           dispatch(
             setAlert({
               open: true,
               message: "Something went wrong",
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
         } else if (e.response?.status === 500) {
-          // toast.error("Something went wrong", {
-          //   position: toast.POSITION.BOTTOM_RIGHT,
-          // });
+
           dispatch(
             setAlert({
               open: true,
               message: "Something went wrong",
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
@@ -413,12 +393,12 @@ const isNoParking=disable_noparking()
       dispatch(postworksession(id))
         .then((res) => {
           setobj_check_work([...obj_check_work, id]);
-          // toast.success("Work completed successfully");
+
           dispatch(
             setAlert({
               open: true,
               message: "Work completed successfully",
-              severity: "success", // or "error", "warning", "info"
+              severity: "success",
               duration: 6000,
             })
           );
@@ -426,7 +406,7 @@ const isNoParking=disable_noparking()
           dispatch(setOpen(false));
         })
         .catch((err) => {
-          // toast.error(err?.detail ?? "Something went wrong");
+
           dispatch(
             setAlert({
               open: true,
@@ -472,441 +452,433 @@ const isNoParking=disable_noparking()
   }, [open]);
 
 
- function disable_noparking(){
-  const locid=location.find((item) => item.id === locationid)
+  function disable_noparking() {
+    const locid = location.find((item) => item.id === locationid)
 
-  if(locid?.name==="No Parking"){
+    if (locid?.name === "No Parking") {
 
-    return true
+      return true
+    }
+    else {
+
+      return false
+    }
   }
-  else{
-
-    return false
-  }
- }
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <React.Fragment>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-          >
-           <div className="parking-info">
+      <React.Fragment>
+        <SwipeableDrawer
+          anchor={anchor}
+          open={state[anchor]}
+          onClose={toggleDrawer(anchor, false)}
+          onOpen={toggleDrawer(anchor, true)}
+        >
+          <div className="parking-info">
 
-        <div className="row-popup">
-          <div className="model-input1">
-            <label className="popup-label">Location Type:</label>
-            <div className="custom-select">
-              <Select
-                IconComponent={(props) => (
-                  <i
-                    {...props}
-                    className={` ${props.className}`}
-                    style={{ marginRight: "15px" }}
-                  >
-                    <svg
-                      width="19"
-                      height="11"
-                      viewBox="0 0 19 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
-                        stroke="#4E445C"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </i>
-                )}
-                value={locationid}
-                onChange={(e) => {
-                  handlechangeLocationId(e);
-                }}
-                defaultValue={locationid}
-                sx={{ padding: "0px 17px" }}
-                className="innerselect popup-input1 selectbox"
-              >
-                {location?.map((item) => (
-                  <MenuItem key={item.id} value={item.id}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </div>
-          </div>
-        </div>
-
-        <div className="popup-title-cross">
-          <Button
-            autoFocus
-            onClick={() => {
-              handleclick();
-            }}
-          >
-            <img
-              src={cross}
-              alt="cross"
-              className="cross"
-              style={{ width: "15px" }}
-            />
-          </Button>
-        </div>
-        <div className="parking-info-header">
-          <span>Parking Info</span>
-        </div>
-        <div className="parking-info-body">
-          <div className="row-popup">
-            <div className="model-input1">
-              <label className="popup-label">Select Vehicle: </label>
-              <div className="custom-select">
-                {parkingSlot && parkingSlot?.vehicle?.number ? (
-                  <FormControl fullWidth  error={selectcnValid}>
-                    <Select
-                      IconComponent={(props) => (
-                        <i
-                          {...props}
-                          className={` ${props.className}`}
-                          style={{ marginRight: "15px",cursor:'no-drop !important'  }}
-                        >
-                          <svg
-                            width="19"
-                            height="11"
-                            viewBox="0 0 19 11"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
-                              stroke="#4E445C"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </i>
-                      )}
-                      labelId="demo-simple-select-label"
-                      style={{ padding: "0px 17px",cursor:'no-drop !important' }}
-                      id="demo-simple-select"
-                      className="innerselect popup-input1 selectbox"
-                      value={selectedCarNumber}
-                      onChange={(e) => {
-                        handleSelectnumber(e);
-                      }}
-                      name="vehicle_type"
-                      placeholder="Status"
-                      displayEmpty
-                      disabled={true}
-                      renderValue={(value) => parkingSlot?.vehicle?.number}
-                    >
-                      <MenuItem sx={{cursor:'no-drop !important' }} disabled value={parkingSlot?.vehicle?.id}>
-                        {parkingSlot?.vehicle?.number}
-                      </MenuItem>
-                    </Select>
-                    {selectcnValid && (
-                      <FormHelperText>
-                        Vehicle Number is required
-                      </FormHelperText>
-                    )}
-                  </FormControl>
-                ) : (
-                  <FormControl fullWidth error={selectcnValid}>
-                    <Select
-                      IconComponent={(props) => (
-                        <i
-                          {...props}
-                          className={` ${props.className}`}
-                          style={{ marginRight: "15px" }}
-                        >
-                          <svg
-                            width="19"
-                            height="11"
-                            viewBox="0 0 19 11"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
-                              stroke="#4E445C"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </i>
-                      )}
-                      labelId="demo-simple-select-label"
-                      style={{ padding: "0px 17px" }}
-                      id="demo-simple-select"
-                      className="innerselect popup-input1 selectbox"
-                      value={selectedCarNumber}
-                      //disabled if location id in location type has name No Parking
-                      disabled={disable_noparking()}
-                      onChange={(e) => {
-                        handleSelectnumber(e);
-                      }}
-                      name="vehicle_type"
-                      placeholder="Status"
-                      displayEmpty
-                    >
-                      <MenuItem disabled value="default_value_here">
-                        Select Vehicle
-                      </MenuItem>
-                      {/* {vehicleOffsite?.map((item) => (
-                        <MenuItem key={item.id} value={item.id}>
-                          {item.number}
-                        </MenuItem>
-                      ))} */}
-                    </Select>
-
-                    {selectcnValid && (
-                      <FormHelperText>
-                        Vehicle Number is required
-                      </FormHelperText>
-                    )}
-                  </FormControl>
-                )}
-                {objerr.parking_session ? (
-                  <p className="error">{objerr.parking_session}</p>
-                ) : null}
-              </div>
-            </div>
-          </div>
-          <div className="row-popup">
-            <div
-              className="model-input1"
-              style={{
-                padding: parkingSlot?.vehicle?.number
-                  ? "0px"
-                  : "0px 0px 0px 0px",
-              }}
-            >
-              <div className="custom-select">
-                {
-                  <>
-                    {parkingSlot?.vehicle?.number ? (
-                      <button
-                        className="btncontrol"
-                        onClick={() => {
-                          setstatuspopup(!statuspopup);
-                        }}
+            <div className="row-popup">
+              <div className="model-input1">
+                <label className="popup-label">Location Type:</label>
+                <div className="custom-select">
+                  <Select
+                    IconComponent={(props) => (
+                      <i
+                        {...props}
+                        className={` ${props.className}`}
+                        style={{ marginRight: "15px" }}
                       >
-                        OffSite Vehicle
-                      </button>
-                    ) : (
-                      ""
+                        <svg
+                          width="19"
+                          height="11"
+                          viewBox="0 0 19 11"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
+                            stroke="#4E445C"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </i>
                     )}
-                  </>
-                }
+                    value={locationid}
+                    onChange={(e) => {
+                      handlechangeLocationId(e);
+                    }}
+                    defaultValue={locationid}
+                    sx={{ padding: "0px 17px" }}
+                    className="innerselect popup-input1 selectbox"
+                  >
+                    {location?.map((item) => (
+                      <MenuItem key={item.id} value={item.id}>
+                        {item.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="popup-button">
-            <label>
-              <button onClick={handleSaveChanges} className="btncontrol">
-                Save Changes
-              </button>
-            </label>
-            <label>
-              <button
+
+            <div className="popup-title-cross">
+              <Button
+                autoFocus
                 onClick={() => {
                   handleclick();
                 }}
-                className="btncontrol1"
               >
-                Cancel{" "}
-              </button>
-            </label>
-          </div>
-
-          {parkingSlot?.vehicle?.number ? (
-            <>
-              {" "}
-              <div className="divider"></div>
-              <div className="parking-info-header">
-                <span>Schedule Info</span>
-              </div>
-              <div className="parking-details">
-                <div className="row-popup">
-                  <div className="model-input1">
-                    <label className="popup-label">Status Details</label>
-                    <div className="custom-select">
-                      <Select
-                        displayEmpty
-                        IconComponent={(props) => (
-                          <i
-                            {...props}
-                            className={` ${props.className}`}
-                            style={{ marginRight: "15px" }}
-                          >
-                            <svg
-                              width="19"
-                              height="11"
-                              viewBox="0 0 19 11"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                <img
+                  src={cross}
+                  alt="cross"
+                  className="cross"
+                  style={{ width: "15px" }}
+                />
+              </Button>
+            </div>
+            <div className="parking-info-header">
+              <span>Parking Info</span>
+            </div>
+            <div className="parking-info-body">
+              <div className="row-popup">
+                <div className="model-input1">
+                  <label className="popup-label">Select Vehicle: </label>
+                  <div className="custom-select">
+                    {parkingSlot && parkingSlot?.vehicle?.number ? (
+                      <FormControl fullWidth error={selectcnValid}>
+                        <Select
+                          IconComponent={(props) => (
+                            <i
+                              {...props}
+                              className={` ${props.className}`}
+                              style={{ marginRight: "15px", cursor: 'no-drop !important' }}
                             >
-                              <path
-                                d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
-                                stroke="#4E445C"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </i>
-                        )}
-                        value={newStatus}
-                        onChange={(e) =>
-                          setNewStatus(e.target.value) || setError(false)
-                        }
-                        className="innerselect popup-input1"
-                        sx={{ padding: "0px 17px" }}
-                      >
-                        <MenuItem value="" disabled>
-                          Select Work
-                        </MenuItem>
-                        {works?.map((item) => (
-                          <MenuItem key={item.id} value={item.name}>
-                            {item.name}
+                              <svg
+                                width="19"
+                                height="11"
+                                viewBox="0 0 19 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
+                                  stroke="#4E445C"
+                                  strokeWidth="2.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </i>
+                          )}
+                          labelId="demo-simple-select-label"
+                          style={{ padding: "0px 17px", cursor: 'no-drop !important' }}
+                          id="demo-simple-select"
+                          className="innerselect popup-input1 selectbox"
+                          value={selectedCarNumber}
+                          onChange={(e) => {
+                            handleSelectnumber(e);
+                          }}
+                          name="vehicle_type"
+                          placeholder="Status"
+                          displayEmpty
+                          disabled={true}
+                          renderValue={(value) => parkingSlot?.vehicle?.number}
+                        >
+                          <MenuItem sx={{ cursor: 'no-drop !important' }} disabled value={parkingSlot?.vehicle?.id}>
+                            {parkingSlot?.vehicle?.number}
                           </MenuItem>
-                        ))}
-                      </Select>
-                      {objerr.work ? (
-                        <p className="error">{objerr.work}</p>
-                      ) : null}
-                      {error && <p className="error">Please select status</p>}
-                    </div>
+                        </Select>
+                        {selectcnValid && (
+                          <FormHelperText>
+                            Vehicle Number is required
+                          </FormHelperText>
+                        )}
+                      </FormControl>
+                    ) : (
+                      <FormControl fullWidth error={selectcnValid}>
+                        <Select
+                          IconComponent={(props) => (
+                            <i
+                              {...props}
+                              className={` ${props.className}`}
+                              style={{ marginRight: "15px" }}
+                            >
+                              <svg
+                                width="19"
+                                height="11"
+                                viewBox="0 0 19 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
+                                  stroke="#4E445C"
+                                  strokeWidth="2.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </i>
+                          )}
+                          labelId="demo-simple-select-label"
+                          style={{ padding: "0px 17px" }}
+                          id="demo-simple-select"
+                          className="innerselect popup-input1 selectbox"
+                          value={selectedCarNumber}
+                          disabled={disable_noparking()}
+                          onChange={(e) => {
+                            handleSelectnumber(e);
+                          }}
+                          name="vehicle_type"
+                          placeholder="Status"
+                          displayEmpty
+                        >
+                          <MenuItem disabled value="default_value_here">
+                            Select Vehicle
+                          </MenuItem>
+                        </Select>
+
+                        {selectcnValid && (
+                          <FormHelperText>
+                            Vehicle Number is required
+                          </FormHelperText>
+                        )}
+                      </FormControl>
+                    )}
+                    {objerr.parking_session ? (
+                      <p className="error">{objerr.parking_session}</p>
+                    ) : null}
                   </div>
                 </div>
-                <div>
-                  <label className="popup-label">Date and Time:</label>
-                </div>{" "}
-                <div className="parking-select-date">
-                  <DemoContainer components={["DatePicker"]}>
-                    <MobileDateTimePicker
-                      defaultValue={dayjs(new Date())}
-                      onChange={handleDateChange}
-                      minDate={dayjs(new Date())}
-                    />
-                  </DemoContainer>
-                </div>
-                <div className="popup-button">
-                  <label>
-                    <button
-                    type="button"
-                      className="btncontrol"
-                      onClick={() => {
-                        workstatus(parkingSlot?.parking_session_id);
-                      }}
-                    >
-                      Add{" "}
-                    </button>
-                  </label>
-                </div>
               </div>
-            </>
-          ) : null}
-        </div>
-
-        <div className="parking-info-footer">
-          <div className="footer-text">
-            <p>
-              {parkingSlot?.works_sessions?.length >0? <span>Added Status:</span>:null}
-
-              {parkingSlot?.works_sessions?.map((item) => (
-                <ul
+              <div className="row-popup">
+                <div
+                  className="model-input1"
                   style={{
-                    listStyleType: "none",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    padding: parkingSlot?.vehicle?.number
+                      ? "0px"
+                      : "0px 0px 0px 0px",
                   }}
                 >
-                  <li key={item.id} style={{display:'flex'}}>
-                    {item.work.name === "Polishing" ? (
-                      <img
-                        src={Polishing}
-                        alt="Polishing"
-                        style={{ width: "20px", marginRight: "10px" }}
-                      />
-                    ) : null}{" "}
-                    {item.work.name === "Washing" ? (
-                      <img
-                        src={Washing}
-                        alt="Washing"
-                        style={{ width: "20px", marginRight: "10px" }}
-                      />
-                    ) : null}
-                    {item.work.name === "Repairing" ? (
-                      <img
-                        src={damageicon}
-                        alt="Damage"
-                        style={{ width: "20px", marginRight: "10px" }}
-                      />
-                    ) : null}
-                    {item.work.name === "Pickup" ? (
-                      <img
-                        src={pickbyicon}
-                        alt="Pick by owner"
-                        style={{
-                          width: "20px",
-                          marginRight: "10px",
-                        }}
-                      />
-                    )
-                    : null}
-                    {item.work.name === "Arriving" ? (
-                      <img
-                        src={arrivingicon}
-                        alt="Arriving"
-                        className="iconadded"
-                        style={{
-                          width: "20px",
-                          marginRight: "10px",
-                        }}
-                      />
-                    )
-                    : null}
-                    <div className="iconname" style={{minWidth:'80px'}}>{item.work.name}</div>
+                  <div className="custom-select">
+                    {
+                      <>
+                        {parkingSlot?.vehicle?.number ? (
+                          <button
+                            className="btncontrol"
+                            onClick={() => {
+                              setstatuspopup(!statuspopup);
+                            }}
+                          >
+                            OffSite Vehicle
+                          </button>
+                        ) : (
+                          ""
+                        )}
+                      </>
+                    }
+                  </div>
+                </div>
+              </div>
+              <div className="popup-button">
+                <label>
+                  <button onClick={handleSaveChanges} className="btncontrol">
+                    Save Changes
+                  </button>
+                </label>
+                <label>
+                  <button
+                    onClick={() => {
+                      handleclick();
+                    }}
+                    className="btncontrol1"
+                  >
+                    Cancel{" "}
+                  </button>
+                </label>
+              </div>
 
-                    <div style={{marginRight:'5px'}}>
-                      {dayjs(item.scheduled_at).format("DD-MM-YYYY")}
+              {parkingSlot?.vehicle?.number ? (
+                <>
+                  {" "}
+                  <div className="divider"></div>
+                  <div className="parking-info-header">
+                    <span>Schedule Info</span>
+                  </div>
+                  <div className="parking-details">
+                    <div className="row-popup">
+                      <div className="model-input1">
+                        <label className="popup-label">Status Details</label>
+                        <div className="custom-select">
+                          <Select
+                            displayEmpty
+                            IconComponent={(props) => (
+                              <i
+                                {...props}
+                                className={` ${props.className}`}
+                                style={{ marginRight: "15px" }}
+                              >
+                                <svg
+                                  width="19"
+                                  height="11"
+                                  viewBox="0 0 19 11"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1.69531 1.5L9.69531 9.5L17.6953 1.5"
+                                    stroke="#4E445C"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              </i>
+                            )}
+                            value={newStatus}
+                            onChange={(e) =>
+                              setNewStatus(e.target.value) || setError(false)
+                            }
+                            className="innerselect popup-input1"
+                            sx={{ padding: "0px 17px" }}
+                          >
+                            <MenuItem value="" disabled>
+                              Select Work
+                            </MenuItem>
+                            {works?.map((item) => (
+                              <MenuItem key={item.id} value={item.name}>
+                                {item.name}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                          {objerr.work ? (
+                            <p className="error">{objerr.work}</p>
+                          ) : null}
+                          {error && <p className="error">Please select status</p>}
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="popup-label">Date and Time:</label>
                     </div>{" "}
-                    <div>{dayjs(item.scheduled_at).format("HH:mm")}</div>
-                  </li>
-                  <li>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          sx={{ color: "#50485A !important" }}
-                          checked={check_work(item.id, item)}
-                          disabled={item.is_completed}
-                          onClick={() => {
-                            setcompletedwork(true);
-                            setcheckboxid(item.id);
-                          }}
-                          name="checkedB"
-                          color="primary"
+                    <div className="parking-select-date">
+                      <DemoContainer components={["DatePicker"]}>
+                        <MobileDateTimePicker
+                          defaultValue={dayjs(new Date())}
+                          onChange={handleDateChange}
+                          minDate={dayjs(new Date())}
                         />
-                      }
-                    />
-                  </li>
-                </ul>
-              ))}
-            </p>
+                      </DemoContainer>
+                    </div>
+                    <div className="popup-button">
+                      <label>
+                        <button
+                          type="button"
+                          className="btncontrol"
+                          onClick={() => {
+                            workstatus(parkingSlot?.parking_session_id);
+                          }}
+                        >
+                          Add{" "}
+                        </button>
+                      </label>
+                    </div>
+                  </div>
+                </>
+              ) : null}
+            </div>
+
+            <div className="parking-info-footer">
+              <div className="footer-text">
+                <p>
+                  {parkingSlot?.works_sessions?.length > 0 ? <span>Added Status:</span> : null}
+
+                  {parkingSlot?.works_sessions?.map((item) => (
+                    <ul
+                      style={{
+                        listStyleType: "none",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <li key={item.id} style={{ display: 'flex' }}>
+                        {item.work.name === "Polishing" ? (
+                          <img
+                            src={Polishing}
+                            alt="Polishing"
+                            style={{ width: "20px", marginRight: "10px" }}
+                          />
+                        ) : null}{" "}
+                        {item.work.name === "Washing" ? (
+                          <img
+                            src={Washing}
+                            alt="Washing"
+                            style={{ width: "20px", marginRight: "10px" }}
+                          />
+                        ) : null}
+                        {item.work.name === "Repairing" ? (
+                          <img
+                            src={damageicon}
+                            alt="Damage"
+                            style={{ width: "20px", marginRight: "10px" }}
+                          />
+                        ) : null}
+                        {item.work.name === "Pickup" ? (
+                          <img
+                            src={pickbyicon}
+                            alt="Pick by owner"
+                            style={{
+                              width: "20px",
+                              marginRight: "10px",
+                            }}
+                          />
+                        )
+                          : null}
+                        {item.work.name === "Arriving" ? (
+                          <img
+                            src={arrivingicon}
+                            alt="Arriving"
+                            className="iconadded"
+                            style={{
+                              width: "20px",
+                              marginRight: "10px",
+                            }}
+                          />
+                        )
+                          : null}
+                        <div className="iconname" style={{ minWidth: '80px' }}>{item.work.name}</div>
+
+                        <div style={{ marginRight: '5px' }}>
+                          {dayjs(item.scheduled_at).format("DD-MM-YYYY")}
+                        </div>{" "}
+                        <div>{dayjs(item.scheduled_at).format("HH:mm")}</div>
+                      </li>
+                      <li>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              sx={{ color: "#50485A !important" }}
+                              checked={check_work(item.id, item)}
+                              disabled={item.is_completed}
+                              onClick={() => {
+                                setcompletedwork(true);
+                                setcheckboxid(item.id);
+                              }}
+                              name="checkedB"
+                              color="primary"
+                            />
+                          }
+                        />
+                      </li>
+                    </ul>
+                  ))}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-          </SwipeableDrawer>
-        </React.Fragment>
-
-
+        </SwipeableDrawer>
+      </React.Fragment>
       <DialogBox
         open={statuspopup}
         onClose={() => setstatuspopup(false)}
@@ -916,7 +888,6 @@ const isNoParking=disable_noparking()
           setstatuspopup(false);
         }}
       />
-
       <DialogBox
         open={completedwork}
         onClose={() => setcompletedwork(false)}

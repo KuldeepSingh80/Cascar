@@ -8,7 +8,6 @@ import { FaCircle } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
-
 import RepairingIcon from "Assets/Images/damageicon.svg";
 import ArrivingIcon from "Assets/Images/arriving.svg";
 import WashingIcon from "Assets/Images/washingicon.svg";
@@ -56,7 +55,7 @@ const Dashboard = () => {
       Washing: WashingIcon,
       Pickup: PickByIcon,
       Arriving: ArrivingIcon,
-      // Add more mappings as needed
+
     };
     return iconMapping[name];
   };
@@ -64,15 +63,14 @@ const Dashboard = () => {
   const days = [
     { name: "Monday", color: "#56C72F" },
     { name: "Tuesday", color: "#3483DF" },
-    { name: "Wednesday", color: "#FBBC5E" },
     { name: "Thursday", color: "#01CFC5" },
     { name: "Friday", color: "#FF649C" },
     { name: "Saturday", color: "#1C3C60" },
     { name: "Next Week", color: "#8F2FAD" },
     { name: "Overdue", color: "#FF251E" },
-    // Add more days as needed
-  ];
 
+  ];
+ 
   const renderDays = () => {
     return days.map((day, index) => (
       <li key={index}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PanZoomCol from "./PanZoomCol";
 import { getAllParkingMap } from "redux/slices/ParkingSlice";
-import { IconButton, Skeleton, Tooltip, tooltipClasses } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import SkeletonLoader from "./SkeletonLoader";
@@ -43,10 +43,10 @@ const Panzoomcls = () => {
     if (parkingData && parkingData.length > 0) {
       const minPanScale = minScale;
       const maxPanScale = 2;
-      
+
       setPanScale((prevPanScale) => {
         let newPanScale;
-  
+
         if (type === "zoomout") {
           newPanScale = Math.max(minPanScale, prevPanScale - 0.05);
         } else if (type === "zoomin") {
@@ -54,20 +54,9 @@ const Panzoomcls = () => {
         } else {
           return prevPanScale;
         }
-  
+
         return newPanScale;
       });
-    }
-  };
-  
-
-  const resetPanZoom = () => {
-    if (parkingData && parkingData.length > 0) {
-      const maxParkingSlots = Math.max(
-        ...parkingData.map((item) => item.max_parking_slots)
-      );
-      const initialPanScale = 1 / (maxParkingSlots * 0.1);
-      setPanScale(initialPanScale - 0.1);
     }
   };
 
@@ -95,27 +84,15 @@ const Panzoomcls = () => {
     dragStartRef.current.isDragging = false;
   };
   const handleTouchStart = (e) => {
-    handleDragStart(e.touches[0]); // Use the first touch point
+    handleDragStart(e.touches[0]); t
   };
 
   const handleTouchMove = (e) => {
-    handleDragMove(e.touches[0]); // Use the first touch point
+    handleDragMove(e.touches[0]);
   };
 
   const handleTouchEnd = () => {
     handleDragEnd();
-  };
-  const calculateCenter = (e) => {
-    
-    // Check if containerRef.current is truthy before accessing its properties
-    if (containerRef.current) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      const centerX = width / 2;
-      const centerY = height / 2;
-      console.log(e,"event data")
-      return `${centerX}px ${centerY}px`;
-    }
-    return 'center center';
   };
 
 
@@ -132,22 +109,21 @@ const Panzoomcls = () => {
         onTouchEnd={handleTouchEnd}
         style={{
           WebkitOverflowScrolling: 'touch',
-          userSelect: 'none', // Disable text selection
-    
+          userSelect: 'none', 
         }}
       >
         {loader ? (
-          // Loader component
+
           <div>
             <SkeletonLoader />
           </div>
         ) : (
-          // Parking map content
+
           <div
             className="parking-map-wrapper-inner"
             style={{
               transform: `matrix(${panScale}, 0, 0, ${panScale}, 0, 0)`,
-              
+
             }}
           >
             {parkingData &&
@@ -168,7 +144,6 @@ const Panzoomcls = () => {
         )}
       </div>
 
-      {/* Recenter and Zoom buttons */}
       <div className="recenter-cls">
         <div className="zoom">
           <div

@@ -7,61 +7,19 @@
   font-family: "Inter", sans-serif;
 }
 
-.MuiTablePagination-root .MuiToolbar-root>p {
-  display: none !important;
-  /* background-color: red; */
-}
-
-.parking-map-wrapper {
-
-  height: calc(100vh - 265px);
-
-}
-
-
 body {
   color: #4e445c;
   font-size: 16px;
   background-color: #fafafa;
-  position: unset !important;
-  min-height: unset;
-
-
 }
 
-.mainbody {
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px 0 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.main_body {
-  padding: 30px 25px;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.parking-map-wrapper {
+  height: calc(100vh - 265px);
 }
 
 .login-outerdiv {
   height: calc(100vh - 80px);
   background-image: url("../Images/loginbg.svg");
-  background-color: #fafafa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  width: 100%;
-  -webkit-box-sizing: border-box !important;
-  -moz-box-sizing: border-box !important;
-  box-sizing: border-box !important;
-}
-
-.changepassword-outerdiv {
   background-color: #fafafa;
   display: flex;
   justify-content: center;
@@ -76,15 +34,6 @@ body {
   width: 100%;
   background-color: #fff;
   border-radius: 30px;
-}
-
-.changepassword-outerdiv .change-password-section {
-  max-width: 575px;
-  padding: 38px 39px 70px 39px;
-  box-shadow: 7px 7px 12px 0px rgba(29, 71, 169, 0.15);
-  width: 100%;
-  background-color: #fff;
-  border-radius: 10px;
 }
 
 .logintitle .logo {
@@ -136,27 +85,25 @@ body {
 }
 
 .loginformcontrol {
-  padding: 0px 0px 24px 0px;
+  padding: 0 0 24px 0;
   color: #4e445c;
   font-family: "Inter", sans-serif;
   font-size: 16px;
-
   font-weight: 500;
   line-height: 1.4;
   width: 100%;
 }
 
 .change-div p {
-  margin: 0px !important;
-  background-color: white;
+  margin: 0 !important;
+  background-color: #fff;
 }
 
 .change-password-control {
-  padding: 0px 0px 24px 0px;
+  padding: 0 0 24px 0;
   color: #4e445c;
   font-family: "Inter", sans-serif;
   font-size: 16px;
-
   font-weight: 500;
   line-height: 1.4;
   width: 100%;
@@ -175,7 +122,7 @@ body {
 .rememberme {
   display: flex;
   justify-content: space-between;
-  padding: 3px 0px 19px 0px;
+  padding: 3px 0 19px 0;
   align-items: center;
   color: #4e445c;
   text-align: center;
@@ -253,25 +200,11 @@ body {
   transition: all 0.4s ease-in-out !important;
 }
 
-.MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiButtonBase-root,
-.MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiTypography-root,
-.MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiPickersDay-root {
-  /* overflow-x: unset !important;
-   */
-  width: 3vw !important;
-  height: 3vw !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-}
-
 .MuiDateRangeCalendar-monthContainer .MuiPickersSlideTransition-root {
   min-height: 507px !important;
 }
 
 .loginbuttoncontrol:hover {
-  /* background: var(--blue-gradient,
-      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-      linear-gradient(0deg, #1d91de 0%, #1d47a9 100%)) !important; */
   background-position: 100% 0;
   -moz-transition: all 0.4s ease-in-out !important;
   -o-transition: all 0.4s ease-in-out !important;
@@ -284,9 +217,6 @@ body {
 }
 
 .change-password-buttoncontrol:hover {
-  /* background: var(--blue-gradient,
-        linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-        linear-gradient(0deg, #1d91de 0%, #1d47a9 100%)) !important; */
   background-position: 100% 0;
   -moz-transition: all 0.4s ease-in-out !important;
   -o-transition: all 0.4s ease-in-out !important;
@@ -401,7 +331,6 @@ input[type="checkbox"]:disabled+label:before {
 
 .section-inner {
   position: relative;
-
   background-color: #fff;
   border-radius: 10px;
   border: 1.5px solid rgba(78, 68, 92, 0.1);
@@ -416,7 +345,6 @@ input[type="checkbox"]:disabled+label:before {
   border: 1.5px solid rgba(78, 68, 92, 0.1);
   background: #fff;
   overflow: hidden;
-  /* min-height: 640px; */
   min-width: 250px;
 }
 
@@ -424,7 +352,7 @@ input[type="checkbox"]:disabled+label:before {
   border: 0;
 }
 
-.worload-loder-height {
+.workload-loder-height {
   position: relative;
   padding: 30px;
   background-color: #fff;
@@ -434,19 +362,10 @@ input[type="checkbox"]:disabled+label:before {
   height: 830px;
 }
 
-.MuiPickersDay-root.Mui-selected:active {
-  background-color: transparent !important;
-  color: transparent !important;
-}
-
 .section-inner .MuiDataGrid-columnHeaders {
   background-color: #f3f5fb;
   border-radius: 8px;
   border: 0;
-}
-
-.css-1qk0eox {
-  position: relative;
 }
 
 .section-inner .MuiBox-root .selectstatus {
@@ -469,26 +388,10 @@ input[type="checkbox"]:disabled+label:before {
   -webkit-appearance: none;
 }
 
-.css-19yv7fj-MuiTypography-root {
-  padding-left: 30px !important;
-}
-
-.css-jef1b6-MuiDateRangeCalendar-container:not(:last-of-type) {
-  border: none !important;
-}
-
-.css-1p9kq9s-MuiDataGrid-root .MuiDataGrid-columnHeader:focus {
-  outline: none !important;
-}
-
 .section-inner .custom-table .actions {
   display: flex;
   gap: 18px;
   justify-content: center;
-}
-
-.css-10nakn3-MuiModal-root-MuiPopover-root-MuiMenu-root {
-  z-index: 10003 !important;
 }
 
 .section-inner .custom-table .actionitems {
@@ -513,7 +416,6 @@ input[type="checkbox"]:disabled+label:before {
   margin-left: 5px;
   border-radius: 50px;
   padding: 12px 19px;
-  /* width: 100%; */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -538,18 +440,11 @@ input[type="checkbox"]:disabled+label:before {
 }
 
 .addbuttoncontrol:hover {
-  /* background: var(--blue-gradient,
-        linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-        linear-gradient(0deg, #1d91de 0%, #1d47a9 100%)) !important; */
   background-position: 100% 0;
   -moz-transition: all 0.4s ease-in-out !important;
   -o-transition: all 0.4s ease-in-out !important;
   -webkit-transition: all 0.4s ease-in-out !important;
   transition: all 0.4s ease-in-out !important;
-}
-
-.css-1p9kq9s-MuiDataGrid-root .MuiDataGrid-cell:focus {
-  outline: none !important;
 }
 
 .password-section {
@@ -871,10 +766,6 @@ span.password-toggle {
   border-top: none !important;
 }
 
-.MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  background: #f3f5fb;
-}
-
 .crossedit {
   background: #18408c;
   color: #fff;
@@ -997,28 +888,6 @@ span.password-toggle {
   background: #fff;
 }
 
-.parking-select-date .MuiInputBase-input {
-  font: inherit;
-  letter-spacing: inherit;
-
-  border: 0;
-  box-sizing: content-box;
-  background: none;
-  height: 1.4375em;
-  margin: 0;
-  -webkit-tap-highlight-color: transparent;
-  display: block;
-  min-width: 0;
-  width: 100%;
-  -webkit-animation-name: mui-auto-fill-cancel;
-  animation-name: mui-auto-fill-cancel;
-  -webkit-animation-duration: 10ms;
-  animation-duration: 10ms;
-  padding: 16.5px 73px 16.5px 14px;
-  background: white;
-  color: #4e445c;
-}
-
 .parking-select-date .MuiInputBase-input:hover {
   border: none !important;
 }
@@ -1117,10 +986,6 @@ span.password-toggle {
   margin-bottom: 20px;
 }
 
-.parkingmap * {
-  line-height: 1;
-}
-
 .menu-icons ul {
   display: flex;
   list-style-type: none;
@@ -1158,61 +1023,36 @@ span.password-toggle {
   border-radius: 10px;
   border: 2px solid #dde5fd;
   background: #fff;
-  /* width: 100%; */
   width: 180px;
   max-width: 187px;
   padding: 12px 13px;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(1turn);
-  }
 }
 
 .rainbow {
   position: relative;
   z-index: 0;
   border-radius: 15px;
-  /* overflow: hidden; */
   padding: 1.5px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
   font-weight: bold;
+}
 
-  /* &::before {
-		content: '';
-		position: absolute;
-		z-index: -2;
-		left: -50%;
-		top: -50%;
-		background-color: #399953;
-		background-repeat: no-repeat;
-		background-size: 50% 50%, 50% 50%;
-		background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-		background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
-		animation: rotate 4s linear infinite;
-	}
+.rainbow:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #34388f, #1d47a9, #1d91de);
+  filter: blur(10px);
+  z-index: -1;
+  animation: animate 3s linear infinite;
+}
 
-	&::after {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		left: 6px;
-		top: 6px;
-		background: white;
-		border-radius: 5px;
-	} */
-  &:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, #34388f, #1d47a9, #1d91de);
-    filter: blur(10px);
-    z-index: -1;
-    animation: animate 3s linear infinite;
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
   }
 }
 
@@ -1236,16 +1076,6 @@ span.password-toggle {
   100% {
     background: linear-gradient(to right, #1d47a9, #1d91de, #3b37b5);
   }
-
-  /* 85%{
-    background: linear-gradient(to right,  #1d8bd4, #00b6ff,  #130f8c,#3b37b5);
-  }
-  90%{
-    background: linear-gradient(to right, #3b37b5, #1d8bd4, #00b6ff, #130f8c);
-  }
-  100%{
-    background: linear-gradient(to right, #130f8c,#3b37b5, #1d8bd4, #00b6ff);
-  } */
 
 }
 
@@ -1320,778 +1150,31 @@ span.password-toggle {
   text-align: center;
 }
 
-/* not on hover */
-
 .parkingmap-body-ul {
   display: flex;
   gap: 15px;
-  /* grid-template-columns: repeat(10, 1fr); */
 }
 
 .parking-map-wrapper {
   overflow: scroll;
   height: calc(100vh - 180px);
   position: relative;
-width: 100%;
-  /* min-width: 600px; */
+  width: 100%;
   user-select: none !important;
   touch-action: pan-x pan-y !important;
 
 }
 
 .parking-map-wrapper-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-block;
-  /* height: 370%;
-  width: 376%; */
-  /* overflow: auto; */
   width: 100%;
   height: 100%;
   transform-origin: 0px 0px 0px;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
-.parking-buttons {
-  text-align: center;
-  margin: 10px 0px;
-  z-index: 1000;
-  position: relative;
-}
-
-.parking-buttons .btn1 {
-  padding: 1px 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.parkingmap-sidepopper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  transition: 0.9s ease-in-out;
-  animation: "fadeIn 0.4s";
-}
-
-.parking-info .popup-title-cross {
-  font-family: "Inter", sans-serif;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1.4;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-}
-
-.parking-info .popup-title-cross button {
-  display: flex;
-  width: 40px;
-  min-width: 0;
-  height: 40px;
-  padding: 0;
-  line-height: 0;
-  transition: 0.3s;
-  background-color: transparent !important;
-  border-radius: 50% !important;
-}
-
-.parking-info .popup-title-cross button:hover {
-  background-color: #f1f1f1 !important;
-}
-
-.MuiDataGrid-footerContainer.MuiDataGrid-withBorderColor {
-  border: 0;
-}
-
-.main_wrrpr.active .parkingmap-footer {
-  width: calc(100% - 65px);
-}
-
-.popup-title-cross .MuiButtonBase-root {
-  background-color: transparent !important;
-}
-
-.parking-edit-div {
-  position: relative;
-}
-
-.parking-edit {
-  position: absolute;
-
-  right: 0;
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
-
-  background: var(--blue-gradient,
-      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-      linear-gradient(90deg, #1d91de 0%, #1d47a9 100%));
-  padding: 1px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  cursor: pointer;
-  box-shadow: 7px 7px 12px 0px #1d47a926;
-}
-
-.custom-select select {
-  /* -webkit-appearance: none; */
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid rgba(78, 68, 92, 0.1);
-  background: #f3f5fb;
-  padding: 4px 20px;
-  height: 55px;
-  font-size: 16px;
-}
-
-/* .custom-select {
-  position: relative;
-} */
-
-.sb-logout {
-  margin-right: 10px;
-}
-
-/* .custom-select-arrow {
-  position: absolute;
-  right: 6%;
-  top: 15px;
-} */
-
-
-.date-time {
-  gap: 20px;
-  display: flex;
-  margin-bottom: 25px;
-}
-
-.error {
-  color: red;
-  font-size: 14px;
-}
-
-.date-time .date-input {
-  width: 100%;
-  color: #4e445c;
-  font-size: 16px;
-  padding: 4px 20px;
-  height: 55px;
-  border-radius: 8px;
-  border: 1px solid rgba(78, 68, 92, 0.1);
-  background: #fff;
-}
-
-.popup-section .model-input-full {
-  margin-bottom: 20px;
-}
-
-.popup-section .model-input-full .popup-input1 {
-  background-color: transparent;
-}
-
-.popup-section .model-input-full .selectbox {
-  background-color: transparent;
-}
-
-.popup-section .model-input-full .selectbox .selectstatus {
-  background-color: white;
-}
-
-.popup-section .model-input-full .popup-input1 input {
-  background-color: #f3f5fb;
-}
-
-.popup-section .model-input-full .popup-input1 .MuiInputBase-root {
-  background-color: #f3f5fb;
-}
-
-.popup-section span.password-toggle {
-  top: 45px;
-  right: 10px;
-}
-
-.deletepopup-section .btncontrol {
-  padding: 12px 50px;
-}
-
-.deletepopup-section .MuiPaper-elevation {
-  width: 100%;
-  border-radius: 30px;
-  text-align: center;
-  padding: 25px;
-  min-height: 200px;
-  justify-content: center;
-  margin: 0;
-  max-width: 500px;
-}
-
-.deletepopup-section .MuiTypography-h6 {
-  margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.6;
-  letter-spacing: 0.0075em;
-  padding: 0;
-
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-}
-
-.deletepopup-section .popup-button {
-  padding-bottom: 0;
-}
-
-.imagepopup-section .MuiTypography-h6 {
-  margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 1.6;
-  letter-spacing: 0.0075em;
-  /* padding: 17px 24px; */
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-}
-
-.chipset {
-  margin: 2px !important;
-}
-
-.imagepopup-section .MuiPaper-elevation {
-  width: 100%;
-  margin: 0;
-  border-radius: 30px;
-  text-align: center;
-  padding: 0;
-  max-width: 850px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.customCalendar {
-  display: flex;
-  gap: 50px;
-}
-
-.customCalendar>div:first-of-type {
-  display: none !important;
-}
-
-.customCalendar .MuiDateRangeCalendar-monthContainer {
-  width: 100%;
-  /* min-height: 546px !important; */
-}
-
-.customCalendar .MuiTypography-caption {
-  font-weight: bolder;
-  font-size: 18px;
-  font-family: "Inter", "sans-serif" !important;
-  font-weight: 600 !important;
-}
-
-.section-inner-workload .MuiStack-root {
-  overflow: hidden;
-}
-
-.customCalendar .MuiPickersDay-root {
-  max-width: 45px !important;
-  max-height: 45px !important;
-  margin: 4px;
-}
-
-.customCalendar .MuiDayCalendar-header .MuiDayCalendar-weekDayLabel {
-  width: 41px;
-  height: 42px;
-  font-family: "Inter", "sans-serif" !important;
-  font-weight: 600 !important;
-}
-
-.customCalendar button {
-  font-size: 17px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  font-family: "Inter", "sans-serif" !important;
-  font-weight: 400 !important;
-}
-
-.customCalendar .MuiPickersDay-root:hover {
-  background: var(--Blue-Gradient,
-      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-      linear-gradient(90deg, #1d91de 0%, #1d47a9 100%)) !important;
-  color: #fff;
-}
-
-
-
-.calender-div {
-  background-color: white;
-  border-radius: 10px;
-  border: 1.5px solid rgba(78, 68, 92, 0.1);
-}
-
-.calender-div .MuiIconButton-root {
-  color: black;
-}
-
-.MuiDateRangeCalendar-monthContainer .css-flbe84-MuiDayCalendar-weekContainer {
-  margin: 2px 4px !important;
-  gap: 10px !important;
-}
-
-.MuiDateRangeCalendar-monthContainer .css-i5q14k-MuiDayCalendar-header {
-  gap: 14px !important;
-}
-
-.customCalendar .MuiTypography-subtitle1 {
-  color: #000;
-  font-family: "Inter", "sans-serif";
-  font-size: 18px;
-  font-weight: 700;
-}
-
-/* .MuiButtonBase-root svg {
-  width: 40px;
-  height: 40px;
-} */
-
-
-.work-footer-main {
-  border: 1px solid rgba(78, 68, 92, 0.1);
-  background: #fff;
-  padding: 19px 10px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: calc(100% - 330px);
-  display: flex;
-  justify-content: center;
-  transition: 0.5s;
-}
-
-.main_wrrpr.active .work-footer-main {
-  width: calc(100% - 65px);
-}
-
-.work-footer-ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  list-style-type: none;
-}
-
-.work-footer-ul li {
-  color: #4e445c;
-  font-family: "Inter", "sans-serif";
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.work-footer-ul li svg {
-  margin-right: 7px;
-  width: 14px;
-  height: 14px;
-}
-
-.MuiPaper-root {
-  z-index: 100000 !important;
-}
-
-.selectbox .css-3qbkez-MuiSelect-icon {
-  top: calc(47% - 0.5em) !important;
-}
-
-.goog-te-gadget {
-  font-family: arial;
-  font-size: 0px;
-  color: #666;
-  white-space: nowrap;
-  text-align: end;
-  padding-right: 23px;
-  display: none;
-}
-
-.languagechanger {
-  position: absolute;
-  z-index: 9999;
-  text-align: center;
-  right: 23px;
-  display: flex;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  gap: 4px;
-  align-items: center;
-  justify-content: center;
-}
-
-.languagechanger button {
-  padding-top: 8px;
-  font-size: 16px;
-  /* min-width: 80px; */
-  border: 0px;
-  background: #fff;
-
-}
-
-
-.language-changer {
-  position: absolute;
-  right: 0px;
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  color: #1d5db9;
-  font-size: 15px;
-  padding: 8px;
-  border-radius: 4px;
-  background: #f8f8f8;
-}
-
-.lang-button {
-  padding: 3px 8px;
-  font-size: 16px;
-  border: 0px solid #444;
-  background: #fafafa;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 5px;
-}
-
-.lang-button:hover {
-  background: #eaeaea;
-}
-
-
-
-.goog-te-gadget .goog-te-combo {
-  min-width: 200px;
-  min-height: 25px;
-  margin: 4px 0px;
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-.VIpgJd-ZVi9od-l4eHX-hSRGPd,
-.VIpgJd-ZVi9od-l4eHX-hSRGPd:link,
-.VIpgJd-ZVi9od-l4eHX-hSRGPd:visited,
-.VIpgJd-ZVi9od-l4eHX-hSRGPd:hover,
-.VIpgJd-ZVi9od-l4eHX-hSRGPd:active {
-  display: none !important;
-}
-
-.goog-te-gadget select option {
-  padding: 2px;
-}
-
-.skiptranslate iframe {
-  display: none !important;
-  visibility: hidden;
-
-}
-
-.VIpgJd-ZVi9od-aZ2wEe-OiiCO-ti6hGc {
-  -webkit-transform: unset;
-  transform: unset;
-  opacity: 0;
-  width: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.parking_tooltip {
-  background-color: #1d91de !important;
-  position: relative;
-}
-
-.parking_tooltip::before {
-  content: "";
-  height: 10px;
-  width: 10px;
-  background: #1d91de;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  transform: rotate(45deg) translateX(50%);
-  z-index: -1;
-}
-
-.parking_tooltip h2 {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.full_height_table {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.full_height_table .MuiDataGrid-virtualScroller {
-  flex-grow: 1;
-}
-
-.full_height_table .MuiDataGrid-virtualScroller {
-  flex-grow: 1;
-}
-
-.css-axafay-MuiDataGrid-virtualScroller {
-  overflow: auto;
-  height: 100%;
-  position: relative;
-  /* min-height: 650px !important; */
-}
-
-.parking-header .header-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style-type: none;
-  gap: 6px;
-}
-
-.parking-header .header-list span {
-  font-size: 16px;
-}
-
-
-
-
-
-
-.MuiDialogTitle-root+.css-ypiqx9-MuiDialogContent-root {
-  padding-top: 0;
-  width: 100%;
-}
-
-.Mui-disabled.innerselect {
-  color: rgba(0, 0, 0, 0.38);
-  cursor: no-drop;
-}
-
-.Mui-disabled.innerselect>div {
-  padding-right: 0;
-  padding-left: 0;
-  cursor: no-drop;
-}
-
-.innerselect>div {
-  padding: 16.5px 0px !important;
-}
-
-.innerselect {
-  padding: 0 14px !important;
-}
-
-.MuiDataGrid-footerContainer {
-  padding: 0 20px;
-}
-
-.logininput>div {
-  background: #e8f0fe;
-}
-
-.addbtn {
-  display: flex;
-  width: 100%;
-  max-width: 420px;
-  /* gap: 15px; */
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.search-field {
-  margin-right: 15px;
-  min-width: 170px;
-}
-
-.search-field .searchbar>div {
-  border-radius: 50px;
-  padding: 3px 3px;
-}
-
-.search-field .searchbar>div>div {
-  padding-right: 9px;
-}
-
-.search-field .searchbar>label {
-  left: 1px;
-  top: 3px;
-}
-
-.parking-map-search-right {
-  display: flex;
-  align-items: center;
-}
-
-.parking-map-search-right .search-field {
-  margin-right: 0;
-  margin-left: 25px;
-}
-
-.parkingmap .search-field .MuiOutlinedInput-root {
-  border-radius: 30px;
-}
-
-/*
- *  STYLE 2
- */
-/* WebKit Browsers (Chrome, Safari) */
-.parking-map-wrapper.style-2::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  /* border-radius: 10px;  */
-  /* Rounded corners for WebKit */
-  background-color: #f5f5f5;
-}
-
-.skeleton {
-  width: 50px;
-  height: 20px !important;
-}
-
-.skeleton-section {
-  min-width: 600px !important;
-  width: 100% !important;
-}
-
-
-.parking-map-wrapper.style-2::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-  background-color: #f5f5f5;
-}
-
-.parking-map-wrapper.style-2::-webkit-scrollbar-thumb {
-  /* border-radius: 10px;  */
-  /* Rounded corners for WebKit */
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #1d47a9;
-}
-
-/* Firefox */
-.parking-map-wrapper.style-2 {
-  scrollbar-color: #1d47a9 #f5f5f5;
-  /* thumb color track color */
-  scrollbar-width: thin;
-  /* "thin" or "auto" or "none" */
-
-  scrollbar-color: #1d47a9 #f5f5f5; /* thumb color track color */
-  scrollbar-width: thin; /* "thin" or "auto" or "none" */
-}
-
-
-
-
-.recenter-cls {
-
-  position: absolute;
-  padding: 5px;
-  bottom: 100px;
-  right: 40px;
-  gap: 7px;
-  /* border: 1px solid red; */
-  z-index: 1;
-  display: flex;
-
-  flex-direction: column;
-
-}
-
-.zoom {
-  gap: 1px;
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-  border-radius: 8px;
-  padding: 2px;
-}
-
-.recenter-cls .recenter {
-
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #fff;
-  transition: background-color .16s ease-out;
-  background: #fff;
-  border: 0;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-  vertical-align: baseline;
-  text-align: center;
-
-}
-
-.recenter-cls .zoomout:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  width: 80%;
-  background-color: #ccc;
-  height: 1px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-}
-
-.recenter-cls .zoomin {
-
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #fff;
-  transition: background-color .16s ease-out;
-  background: #fff;
-  border: 0;
-  /* box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15); */
-  vertical-align: baseline;
-}
-
-.recenter-cls .zoomout {
-
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #fff;
-  transition: background-color .16s ease-out;
-  background: #fff;
-  border: 0;
-  /* box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15); */
-  vertical-align: baseline;
-  position: relative;
-}
 
 @media screen and (max-width: 1250px) {
   .parkingmap .sectiontitle {
@@ -2101,12 +1184,10 @@ width: 100%;
     padding: 3px 0px 19px 0px;
     align-items: flex-start;
     color: #4e445c;
-    /* text-align: center; */
     flex-direction: column;
   }
 
   .recenter-cls {
-
     bottom: 139px;
   }
 
@@ -2158,23 +1239,18 @@ width: 100%;
 }
 
 @media screen and (max-width: 991px) {
+
   .customCalendar {
     display: flex !important;
     gap: 10px !important;
   }
-.parking-info .innerselect>div {
-  padding: 12px 0px !important;
-}
-.parking-select-date .MuiInputBase-input {
 
-  height: 12px !important;
+  .parking-info .innerselect>div {
+    padding: 12px 0px !important;
+  }
 
-}
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiButtonBase-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiTypography-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiPickersDay-root {
-    width: 4vw !important;
-    height: 4vw !important;
+  .parking-select-date .MuiInputBase-input {
+    height: 12px !important;
   }
 
   .parking-header .header-icons {
@@ -2200,32 +1276,6 @@ width: 100%;
 }
 
 @media screen and (max-width: 768px) {
-
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiButtonBase-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiTypography-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiPickersDay-root {
-    /* overflow-x: unset !important;
-     */
-    width: 50px !important;
-    height: 50px !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    line-height: 50px;
-  }
-
-
-  .MuiDateRangeCalendar-monthContainer .MuiPickersSlideTransition-root {
-    min-height: 313px !important;
-  }
-
-  .MuiDateRangeCalendar-monthContainer .css-flbe84-MuiDayCalendar-weekContainer {
-    margin: 1px 2px !important;
-    gap: 2px !important;
-  }
-
-  .MuiDateRangeCalendar-monthContainer .css-i5q14k-MuiDayCalendar-header {
-    gap: 2px !important;
-  }
 
   .parking-header .header-icons {
     flex-wrap: wrap;
@@ -2253,10 +1303,6 @@ width: 100%;
     padding-right: 0;
   }
 
-  .MuiDateRangeCalendar-monthContainer .css-i5q14k-MuiDayCalendar-header {
-    gap: 6px !important;
-  }
-
   .customCalendar {
     display: block !important;
   }
@@ -2266,11 +1312,9 @@ width: 100%;
     align-items: self-end;
     margin-top: -35px;
     min-width: 320px;
-
   }
 
   .recenter-cls {
-
     bottom: 152px;
   }
 
@@ -2285,14 +1329,6 @@ width: 100%;
 
 }
 
-@media screen and (max-width: 650px) {
-  .section-inner .custom-table .MuiDataGrid-row .MuiDataGrid-cell {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-  }
-
-}
-
 @media screen and (max-width: 575px) {
   .sectiontitle .titletag {
     font-size: 24px;
@@ -2300,12 +1336,6 @@ width: 100%;
 
   .work-footer-main {
     display: none !important;
-  }
-
-  .recenter-cls {
-
-    bottom: 30px;
-    right: 25px;
   }
 
   .parking-header .header-icons {
@@ -2325,23 +1355,8 @@ width: 100%;
     padding: 30px;
   }
 
-
   .logintitle .logotitle {
     font-size: 26px;
-  }
-
-  .section-inner-workload,
-  .main_body,
-  .section-inner {
-    padding: 30px 15px;
-  }
-
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiButtonBase-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiTypography-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiPickersDay-root {
-    width: 40px !important;
-    height: 40px !important;
-    margin: 4px !important;
   }
 
   .MuiDateRangeCalendar-monthContainer .css-i5q14k-MuiDayCalendar-header {
@@ -2365,10 +1380,6 @@ width: 100%;
     padding-bottom: 0;
   }
 
-
-  /* .customCalendar .MuiDateRangeCalendar-monthContainer {
-    min-height: 100% !important;
-  } */
 }
 
 @media screen and (max-width: 480px) {
@@ -2392,12 +1403,10 @@ width: 100%;
 
   .logintitle .logotitle {
     font-size: 18px;
-    padding: 27px 0px;
+    padding: 27px 0;
   }
 
   .MuiDateRangeCalendar-monthContainer .MuiPickersSlideTransition-root {
-    /* background-color: red !important; */
-    /* overflow-x: unset !important; */
     min-height: 280px !important;
   }
 
@@ -2411,10 +1420,6 @@ width: 100%;
 
   .loginlabel {
     font-size: 18px;
-  }
-
-  .login-outerdiv .loginsection {
-    padding: 38px 25px 70px 25px;
   }
 
   .login-outerdiv .loginsection {
@@ -2448,8 +1453,7 @@ width: 100%;
     gap: 12px;
   }
 
-  .btncontrol,
-  .btncontrol1 {
+  .btncontrol, .btncontrol1 {
     font-size: 14px;
     padding: 12px 20px;
   }
@@ -2517,25 +1521,6 @@ width: 100%;
     justify-content: left;
   }
 
-  .MuiDateRangeCalendar-monthContainer .css-flbe84-MuiDayCalendar-weekContainer {
-    gap: 0 !important;
-    justify-content: space-between;
-  }
-
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiButtonBase-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiTypography-root,
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiPickersDay-root {
-    width: 9vw !important;
-    height: 9vw !important;
-    margin: 2px 0 !important;
-  }
-
-  .MuiDateRangeCalendar-monthContainer div[role="grid"] .MuiTypography-root {
-    width: 9vw !important;
-    height: 9vw !important;
-    margin: 2px 0 !important;
-  }
-
   .customCalendar .MuiPickersSlideTransition-root {
     min-width: 100%;
   }
@@ -2551,9 +1536,6 @@ width: 100%;
 }
 
 @media screen and (max-width: 385px) {
-  .section-inner-workload {
-    padding: 8px;
-  }
 
   .customCalendar button {
     font-size: 13px;
@@ -2590,4 +1572,5 @@ width: 100%;
     max-width: 180px;
     margin-right: 75px;
   }
+
 }

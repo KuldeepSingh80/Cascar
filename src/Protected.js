@@ -1,46 +1,50 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-const Protected = ({ children }) => {
-const navigate = useNavigate();
-const token = localStorage.getItem("token");
-useEffect(() => {
-    if (token === null || token === undefined || !token) {
-     navigate("/");
-    }
-}, [token, navigate]);
-if (token === null || token === undefined || !token) {
-    return <></>;
-}
-return children;
-};
-export const ProtectedAdmin = ({ children }) => {
-    const navigate = useNavigate();
-    const token = localStorage.getItem("token");
-    const issuperadmin = localStorage.getItem("issuperuser");
-    useEffect(() => {
-        if (token === null || token === undefined || !token || issuperadmin==="false" || issuperadmin===null || issuperadmin===undefined) {
-         navigate("/");
-        }
-    }, [token,issuperadmin, navigate]);
-    if (token === null || token === undefined || !token || issuperadmin==="false" || issuperadmin===null || issuperadmin===undefined) {
-        return <></>;
-    }
-    return children;
-    };
-export default Protected;
-export const UnProtectedRoute = ({ children }) => {
-const location = useLocation();
-const navigate = useNavigate();
-const token = localStorage.getItem("token");
-useEffect(() => {
-    if (token !== null  && location.pathname==="/") {
-     navigate("/dashboard");
-    }
-   
 
-}, [token, navigate,location.pathname]);
-if (token !== null && location.pathname==="/"){
-    return <></>;
-}
-return children;
+const useAuthToken = () => {
+  const token = localStorage.getItem("token");
+  return token !== null && token !== undefined && token;
 };
+
+const Protected = ({ children }) => {
+  const navigate = useNavigate();
+  const token = useAuthToken();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+
+  return token ? children : null;
+};
+
+const ProtectedAdmin = ({ children }) => {
+  const navigate = useNavigate();
+  const token = useAuthToken();
+  const issuperadmin = localStorage.getItem("issuperuser") === "true";
+
+  useEffect(() => {
+    if (!token || !issuperadmin) {
+      navigate("/");
+    }
+  }, [token, issuperadmin, navigate]);
+
+  return token && issuperadmin ? children : null;
+};
+
+const UnProtectedRoute = ({ children }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const token = useAuthToken();
+
+  useEffect(() => {
+    if (token && location.pathname === "/") {
+      navigate("/dashboard");
+    }
+  }, [token, location.pathname, navigate]);
+
+  return token && location.pathname === "/" ? null : children;
+};
+
+export { Protected, ProtectedAdmin, UnProtectedRoute };

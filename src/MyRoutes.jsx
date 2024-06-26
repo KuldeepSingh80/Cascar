@@ -1,12 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Protected, { UnProtectedRoute,ProtectedAdmin } from "Protected";
+import Protected, { UnProtectedRoute, ProtectedAdmin } from "Protected";
 import Login from "./Pages/Auth/Login";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import UserManagment from "./Pages/UserManagment/UserManagment";
 import Layout from "./Components/Includes/Layout";
 import ParkingInfo from "Pages/Dashboard/ParkingInfo";
-
 import Password from "Pages/Auth/Password";
 
 const MyRoutes = () => {
@@ -18,9 +17,9 @@ const MyRoutes = () => {
           path="/dashboard"
           element={
             // <Protected>
-              <Layout>
-                <Dashboard />
-              </Layout>
+            <Layout>
+              <Dashboard />
+            </Layout>
             // </Protected>
           }
         />
@@ -33,22 +32,17 @@ const MyRoutes = () => {
             </UnProtectedRoute>
           }
         />
-   
-
         <Route
-            exact
-            path="/users"
-            element={
-              <ProtectedAdmin>
-                <Layout>
-                  <UserManagment />
-                </Layout>
-              </ProtectedAdmin>
-            }
-          />
-
-
-
+          exact
+          path="/users"
+          element={
+            <ProtectedAdmin>
+              <Layout>
+                <UserManagment />
+              </Layout>
+            </ProtectedAdmin>
+          }
+        />
         <Route
           exact
           path="/parkinginfo"

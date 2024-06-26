@@ -2,36 +2,25 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import CancelIcon from "@mui/icons-material/Cancel";
-
-// Import local components or Redux actions/slices
 import PanZoomRows from "./PanZoomRows";
 import { setModal } from "redux/slices/modalSlice";
 import { getAllParkingMap } from "redux/slices/ParkingSlice";
 import { setAlert } from "redux/slices/alertSlice";
 
-
 const PanZoomCol = ({ item, index, parkingSlots }) => {
- // Constants for dispatch and selecting from Redux store
- const dispatch = useDispatch();
- const parkingData = useSelector((state) => state.parking.getAllParkingMap);
-
- // State hooks
- const [editModes, setEditModes] = useState(Array(parkingData?.length).fill(false));
- const [editlabel, seteditlabel] = useState("");
-
-
-
+  const [editModes, setEditModes] = useState(Array(parkingData?.length).fill(false));
+  const [editlabel, seteditlabel] = useState("");
+  const dispatch = useDispatch();
+  const parkingData = useSelector((state) => state.parking.getAllParkingMap);
   const handleEdit = (index) => {
     const labelToUpdate = editlabel[index];
     const token = localStorage.getItem("token");
-
     if (!labelToUpdate || !token) {
-      // toast.error("Invalid label or token");
       dispatch(
         setAlert({
           open: true,
           message: "Invalid label or token",
-          severity: "error", // or "error", "warning", "info"
+          severity: "error",
           duration: 6000,
         })
       );
@@ -52,56 +41,54 @@ const PanZoomCol = ({ item, index, parkingSlots }) => {
       )
       .then((res) => {
         if (res.status === 200) {
-          // toast.success("Label Updated Successfully");
           dispatch(
             setAlert({
               open: true,
               message: "Label Updated Successfully",
-              severity: "success", // or "error", "warning", "info"
+              severity: "success",
               duration: 6000,
             })
           );
           dispatch(getAllParkingMap());
-          // Handle other logic if needed after successful update
-        } else if (res.status === 400) {
-          // toast.error(res.data.non_field_errors[0]);
+
+        } else if (res.status === 400){
+
           dispatch(
             setAlert({
               open: true,
               message: res.data.non_field_errors[0],
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
         } else {
-          // toast.error("Something went wrong");
+
           dispatch(
             setAlert({
               open: true,
               message: "Something went wrong",
-              severity: "error", // or "error", "warning", "info"
+              severity: "error",
               duration: 6000,
             })
           );
         }
       })
       .catch((err) => {
-        // toast.error(err.response?.data?.detail || "An error occurred");
+
         dispatch(
           setAlert({
             open: true,
             message: err.response?.data?.detail || "An error occurred",
-            severity: "error", // or "error", "warning", "info"
+            severity: "error",
             duration: 6000,
           })
         );
       });
   };
-  // console.log(singledata, "iiiii");
+
   const handleLiDoubleClick = async (event, data) => {
     event.preventDefault();
 
-    // Dispatch the asynchronous action
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/parking/parking_map/${data.id}/`,
@@ -116,8 +103,6 @@ const PanZoomCol = ({ item, index, parkingSlots }) => {
     } catch (error) {
       return error.response.data;
     }
-
-    // Now, the asynchronous action is fulfilled, and you can access the updated state
   };
   const [lastTouchEndTime, setLastTouchEndTime] = useState(0);
 
@@ -126,11 +111,10 @@ const PanZoomCol = ({ item, index, parkingSlots }) => {
     const timeDiff = now - lastTouchEndTime;
 
     if (timeDiff <= 300) {
-      // It's a double-tap, call your double-tap handler
+
       handleLiDoubleClick(e, iteminner);
     }
 
-    // Update the last touch end time
     setLastTouchEndTime(now);
   };
 
@@ -144,7 +128,7 @@ const PanZoomCol = ({ item, index, parkingSlots }) => {
                 <input
                   type="text"
                   className="parkingmap-body-front"
-                  value={editlabel[item.id] || ""} // Use the specific edit label for this item
+                  value={editlabel[item.id] || ""}
                   onChange={(e) => {
                     const newEditLabel = [...editlabel];
                     newEditLabel[item.id] = e.target.value;
@@ -196,7 +180,7 @@ const PanZoomCol = ({ item, index, parkingSlots }) => {
           <div style={{ display: "flex", gap: "20px" }}>
             {parkingSlots.map((iteminner, index1) => (
               <li
-                key={iteminner.id} // Assuming iteminner has a unique identifier
+                key={iteminner.id}
                 style={{
                   cursor: "pointer",
                 }}
@@ -212,7 +196,7 @@ const PanZoomCol = ({ item, index, parkingSlots }) => {
               </li>
             ))}
           </div>
-          {/* showing label again */}
+
           <li className="parkingmap-body-front">{item.name}</li>
         </ul>
       </div>
