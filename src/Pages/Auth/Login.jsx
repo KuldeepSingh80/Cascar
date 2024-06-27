@@ -6,7 +6,7 @@ import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { setAlert } from "redux/slices/alertSlice";
-import logo from "../../Assets/Images/cascarparking.svg";
+import logo from "../../Assets/Images/logo.svg";
 import "../../Assets/StyleCss/styles.css";
 
 const Login = () => {
@@ -77,9 +77,9 @@ const Login = () => {
           <div className="loginsection">
             <ValidatorForm className="loginform" onSubmit={handleLogin}>
               <div className="logintitle">
-                <img className="logo" src={logo} alt="Cascar Parking Map Logo" />
+                <img className="logo" src={logo} alt="Parking Map Logo" />
                 <div className="logotitle">
-                  Let’s login to your Cascar Parking Map Account
+                  Let’s login to your  Parking Management Map Account
                 </div>
               </div>
               <div className="loginformcontrol">
@@ -127,7 +127,7 @@ const Login = () => {
         </div>
       </div>
       <div className="loginfooter">
-        <span>Copyright by Cascar Parking Map 2023</span>
+        <span>Copyright by Parking Management 2023</span>
       </div>
     </>
   );

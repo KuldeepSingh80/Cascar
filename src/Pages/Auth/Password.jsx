@@ -5,7 +5,6 @@ import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { setAlert } from "redux/slices/alertSlice";
-import logo from "../../Assets/Images/cascarparking.svg";
 
 const Password = () => {
   const dispatch = useDispatch();
@@ -80,7 +79,6 @@ const Password = () => {
     <div className="changepassword-outerdiv">
       <div className="change-password-section">
         <div className="logintitle passwordtitle">
-          <img className="change-password-logo" src={logo} alt="Cascar Parking Map Logo" />
           <div className="logotitle">Change Password</div>
         </div>
         <ValidatorForm onSubmit={handleSubmit}>
